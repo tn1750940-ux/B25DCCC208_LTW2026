@@ -1,0 +1,14 @@
+[
+  { "id": 1, "name": "Nguyễn Văn An", "phone": "0912345678",
+    "email": "an.nv@gmail.com", "group": "Gia đình", "favorite": true },
+  { "id": 2, "name": "Trần Thị Bình", "phone": "0987654321",
+    "email": "binh.tt@gmail.com", "group": "Bạn bè", "favorite": false },
+  { "id": 3, "name": "Lê Văn Cường", "phone": "0901112233",
+    "email": "cuong.lv@company.vn", "group": "Công việc", "favorite": false },
+  { "id": 4, "name": "Phạm Thị Dung", "phone": "0934556677",
+    "email": "dung.pt@gmail.com", "group": "Bạn bè", "favorite": true },
+  { "id": 5, "name": "Hoàng Văn Em", "phone": "0978889900",
+    "email": "em.hv@company.vn", "group": "Công việc", "favorite": false },
+  { "id": 6, "name": "Vũ Thị Giang", "phone": "0965554433",
+    "email": "giang.vt@gmail.com", "group": "Gia đình", "favorite": false }
+]
