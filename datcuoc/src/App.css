@@ -1,0 +1,259 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 14px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.navbar a:hover {
+  background-color: #f1f5f9;
+}
+
+.navbar a.active {
+  background-color: #15803d;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 980px;
+  margin: 28px auto;
+  padding: 28px 32px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  color: #0f172a;
+}
+
+.status-msg {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.error-msg {
+  color: #dc2626;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  background-color: #f8fafc;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+input[type='text'],
+input[type='number'],
+select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+select:focus {
+  border-color: #15803d;
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+}
+
+.summary-bar {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.summary-bar p {
+  margin: 4px 0;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.data-table th {
+  background-color: #1e293b;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.data-table td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  font-size: 14.5px;
+  color: #334155;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.data-table td a {
+  color: #15803d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.data-table td a:hover {
+  text-decoration: underline;
+}
+
+.center-cell {
+  text-align: center;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #e2e8f0;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.star-btn {
+  font-size: 18px;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+}
+
+.star-btn.active-star {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background-color: #fffbeb;
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0;
+  color: #0f172a;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.option-item {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 15px;
+}
+
+.option-item.correct-option {
+  background-color: #16a34a;
+  color: #ffffff;
+  border-color: #15803d;
+  font-weight: 700;
+}
+
+.hint-box {
+  padding: 12px 16px;
+  background-color: #fef9c3;
+  border-left: 4px solid #eab308;
+  border-radius: 6px;
+  color: #713f12;
+  font-weight: 500;
+  margin: 16px 0;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.bookmark-action-btn {
+  background-color: #15803d;
+  color: #ffffff;
+  border-color: #15803d;
+}
+
+.bookmark-action-btn:hover:not(:disabled) {
+  background-color: #166534;
+}
