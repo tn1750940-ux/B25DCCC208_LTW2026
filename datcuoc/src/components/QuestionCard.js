@@ -9,14 +9,17 @@ const QuestionCard = ({
   onSelectAnswer,
   status,
   selectedAnswer,
+  showHint = false,
 }) => {
-  const { topic, level, question, options, answer } = questionData;
+  const { topic, level, question, options, answer, hint } = questionData;
   const isRevealed = status === 'revealed';
 
   return (
     <div className="question-card">
       <h2>{`Câu ${questionNumber}/${totalQuestions} · ${topic} · ${LEVELS[level]} (${formatMultiplier(MULTIPLIERS[level])})`}</h2>
       <p className="question-text">{question}</p>
+
+      {showHint && <p className="hint-box">{`Gợi ý: ${hint}`}</p>}
 
       <div className="answers-grid">
         {options.map((option, index) => (

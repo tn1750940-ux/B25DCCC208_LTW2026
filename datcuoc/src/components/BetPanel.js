@@ -10,8 +10,9 @@ const BetPanel = ({
   bet,
   onBetChange,
   onConfirmBet,
+  isPreviewed = false,
 }) => {
-  const { topic, level } = questionData;
+  const { topic, level, question } = questionData;
   const errorMsg = validateBet(bet, score);
 
   const handleSubmit = (e) => {
@@ -26,6 +27,12 @@ const BetPanel = ({
       <h2>{`Câu ${questionNumber}/${totalQuestions} · ${topic} · ${LEVELS[level]} (${formatMultiplier(MULTIPLIERS[level])})`}</h2>
       <p className="score-line">{`Điểm hiện có: ${formatScore(score)}`}</p>
 
+      {isPreviewed && (
+        <div className="preview-box">
+          <p className="question-text">{question}</p>
+        </div>
+      )}
+
       <form className="bet-form" onSubmit={handleSubmit}>
         <label htmlFor="bet-input">Mức cược:</label>
         <input
@@ -34,7 +41,11 @@ const BetPanel = ({
           value={bet}
           onChange={(e) => onBetChange(e.target.value)}
         />
-        <button type="submit" className="primary-btn" disabled={Boolean(errorMsg)}>
+        <button
+          type="submit"
+          className="primary-btn"
+          disabled={Boolean(errorMsg)}
+        >
           Đặt cược
         </button>
       </form>

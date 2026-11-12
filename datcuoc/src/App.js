@@ -11,11 +11,32 @@ import QuestionDetail from './pages/QuestionDetail';
 import NotFound from './pages/NotFound';
 import './App.css';
 
+const BOOKMARKS_KEY = 'ltw_cuoc_bookmarks';
+const HISTORY_KEY = 'ltw_cuoc_history';
+
 const App = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [bookmarks, setBookmarks] = useState([]);
+
+  const [bookmarks, setBookmarks] = useState(() => {
+    try {
+      const saved = localStorage.getItem(BOOKMARKS_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  const [history, setHistory] = useState(() => {
+    try {
+      const saved = localStorage.getItem(HISTORY_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
   const [playerName, setPlayerName] = useState('');
 
   useEffect(() => {
@@ -44,12 +65,28 @@ const App = () => {
     };
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
+  }, [bookmarks]);
+
+  useEffect(() => {
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  }, [history]);
+
   const toggleBookmark = (id) => {
     if (bookmarks.includes(id)) {
       setBookmarks(bookmarks.filter((item) => item !== id));
     } else {
       setBookmarks([...bookmarks, id]);
     }
+  };
+
+  const handleSaveHistory = (record) => {
+    setHistory((prev) => [...prev, record]);
+  };
+
+  const handleClearHistory = () => {
+    setHistory([]);
   };
 
   return (
@@ -61,15 +98,30 @@ const App = () => {
             <Home
               playerName={playerName}
               onPlayerNameChange={setPlayerName}
+              history={history}
             />
           }
         />
         <Route
           path="play"
-          element={<Play questions={questions} playerName={playerName} />}
+          element={
+            <Play
+              questions={questions}
+              playerName={playerName}
+              onSaveHistory={handleSaveHistory}
+            />
+          }
         />
         <Route path="result" element={<Result />} />
-        <Route path="history" element={<History />} />
+        <Route
+          path="history"
+          element={
+            <History
+              history={history}
+              onClearHistory={handleClearHistory}
+            />
+          }
+        />
         <Route
           path="questions"
           element={

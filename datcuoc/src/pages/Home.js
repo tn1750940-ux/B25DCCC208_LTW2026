@@ -8,8 +8,16 @@ import {
   formatScore,
 } from '../data';
 
-const Home = ({ playerName = '', onPlayerNameChange }) => {
+const Home = ({ playerName = '', onPlayerNameChange, history = [] }) => {
   const navigate = useNavigate();
+
+  const bestRecord =
+    history.length > 0
+      ? history.reduce(
+          (best, item) => (item.finalScore > best.finalScore ? item : best),
+          history[0]
+        )
+      : null;
 
   const handleStartGame = (e) => {
     e.preventDefault();
@@ -21,6 +29,12 @@ const Home = ({ playerName = '', onPlayerNameChange }) => {
   return (
     <div className="home-page">
       <h1>Đặt cược kiến thức</h1>
+
+      {bestRecord && (
+        <p className="record-banner">
+          {`Kỷ lục: ${formatScore(bestRecord.finalScore)} – ${bestRecord.name}`}
+        </p>
+      )}
 
       <div className="rules-box">
         <h3>Luật chơi</h3>
@@ -39,6 +53,9 @@ const Home = ({ playerName = '', onPlayerNameChange }) => {
           </li>
           <li>
             {`Lượt chơi kết thúc khi hoàn thành 12 câu hoặc khi số điểm còn dưới ${formatScore(MIN_BET)} (cháy túi).`}
+          </li>
+          <li>
+            Người chơi có 3 quyền trợ giúp (mỗi quyền dùng 1 lần/lượt): Xem trước, Bảo hiểm và Gợi ý.
           </li>
         </ul>
       </div>
